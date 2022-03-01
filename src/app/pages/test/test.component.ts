@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit {
+  selectedCity: string = '';
+  toggle = false;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -16,5 +19,6 @@ export class TestComponent implements OnInit {
 
   citySelect(value: any) {
     alert(value);
+    this.selectedCity = value;
   }
 }

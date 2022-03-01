@@ -20,3 +20,34 @@
 ></app-select>
 
 <!-- <app-image [base64]="" [imgUrl]="" [width]="200" [height]="300"></app-image> -->
+
+<!-- angularda switch case yapmamızı sağlar -->
+
+seçilen şehir: {{ selectedCity }}
+
+<div [ngSwitch]="selectedCity">
+  <div *ngSwitchCase="'izmir'">Egenin incisi</div>
+  <div *ngSwitchCase="'istanbul'">Türkiyenin Kalbi</div>
+  <div *ngSwitchCase="'adıyaman'">Tütünün merkezi</div>
+  <div *ngSwitchDefault>Seçilen şehir bulunamadı</div>
+</div>
+
+<!-- ngIf else template yapısı -->
+
+<div
+  *ngIf="selectedCity == 'izmir'; then izmirTemplate; else adiyamanTemplate"
+></div>
+
+<ng-template #izmirTemplate><div>İzmiri seçtik</div> </ng-template>
+
+<ng-template #adiyamanTemplate> <div>Adıyamanı seçtik</div> </ng-template>
+
+<!-- class dinamik olarak ternaryif ile verme işlemi -->
+<div [ngClass]="selectedCity == 'izmir' ? 'gray' : 'blue'">asdsadsadsad</div>
+
+<button (click)="toggle = !toggle">Göster / Gizle</button>
+<p *ngIf="toggle">Gizlenen İçerik</p>
+
+Seçilen Input : <input [type]="'checkbox'" [checked]="toggle" />
+<button [disabled]="toggle">Button</button>
+<span [hidden]="toggle">İçerik</span>

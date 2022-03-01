@@ -1,1 +1,16 @@
-<p>todos works!</p>
+<p>{{ title }}</p>
+
+<ul>
+  <li *ngFor="let item of titles; let i = index">
+    {{ item }}
+    <button (click)="Edit(i)">Edit</button>
+    <button (click)="Delete(i)">x</button>
+  </li>
+</ul>
+
+<div>
+  <input [value]="title" (input)="title = $any($event).target.value" />
+
+  <button *ngIf="selectedIndex == -1" (click)="Add()">Ekle</button>
+  <button *ngIf="selectedIndex != -1" (click)="Update()">Update</button>
+</div>
